@@ -1,0 +1,13 @@
+.title {
+	font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+body {
+  font: 16px Arial; 
+}
+
+.leaflet-popup-content-wrapper {
+	font-size: 16px;
+	margin-left: 2px;
+	margin-right: 2px;
+}
