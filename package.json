@@ -8,6 +8,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "leaflet": "^1.5.1",
+    "leaflet-extra-markers": "^1.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-leaflet": "^2.4.0",

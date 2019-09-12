@@ -1,12 +1,7 @@
 import fetch from 'cross-fetch'
-
+import L from 'leaflet';
 export const CLICK_MARKER = 'CLICK_MARKER'
 
-export const EXPLORE_PANEL = 'EXPLORE_PANEL'
-
-export const SEARCH_PANEL = 'SEARCH_PANEL'
-
-export const CLICK_PANEL = 'CLICK_PANEL'
 // Action creators
 
 export const REQUEST_API_DATA = 'REQUEST_API_DATA'
@@ -25,12 +20,6 @@ export function clickMarker(id, isSelected){
 	}
 }
 
-export function clickPanel(panel){
-	return {
-		type: CLICK_PANEL,
-		panel
-	}
-}
 
 
 
@@ -135,16 +124,31 @@ export function fetchDistanceMatrix(coordinatesToLookUp){
 					console.log(JSON.stringify(json))
 					let sortedDistanceArray = zip(closestStationIDs, json.distances[0].slice(1))
 										 		.sort((a, b) => ( a[1] - b[1] )).slice(0,5);
-					dispatch(receiveDistanceMatrix(sortedDistanceArray));
+					dispatch(receiveDistanceMatrix(sortedDistanceArray, stationsByID));
 				})
 
 		}
 }
 
-export function receiveDistanceMatrix(distanceArray) {
+export function receiveDistanceMatrix(distanceArray, stationsByID) {
+	let allCoordinates = distanceArray.map( x => stationsByID[x[0]].coordinates)
+	let maxLat = Math.max(...allCoordinates.map(x => x[0]))
+	let maxLong = Math.max(...allCoordinates.map(x => x[1]))
+	let minLat = Math.min(...allCoordinates.map(x => x[0]))
+	let minLong = Math.min(...allCoordinates.map(x => x[1]))
+
+	// console.log(maxLat)
+	// console.log(maxLong)
+	// console.log(minLat)
+	// console.log(minLong)
+	let bounds = [
+		[maxLat, maxLong],
+		[minLat, minLong]
+	]
 	return {
 		type: RECEIVE_DISTANCE_MATRIX_SUCCESS,
-		distanceArray
+		distanceArray,
+		bounds,
 	}
 }
 

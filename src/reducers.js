@@ -1,10 +1,5 @@
 import { combineReducers } from 'redux'
-import { CLICK_MARKER, 
-		 UNCLICK_MARKER,
-		 EXPLORE_PANEL,
-		 CLICK_PANEL,
-		 SEARCH_PANEL,
-		 REQUEST_API_DATA,
+import { REQUEST_API_DATA,
 		 RECEIVE_API_DATA,
 		 RECEIVE_API_DATA_SUCCESS,
 		 REQUEST_DISTANCE_MATRIX,
@@ -17,31 +12,6 @@ function copyAndRemove(array, index){
 	// Copies an array without the element at the index provided
 	return [...array.slice(0,index), ...array.slice(index+1)]
 }
-
-function panel(state=EXPLORE_PANEL, action){
-	switch (action.type){
-		case CLICK_PANEL:
-			return action.panel
-		default:
-			return state
-	}
-}
-
-function clickedStations(state=[], action){
-	switch (action.type) {
-		case CLICK_MARKER:
-			if ( !action.isSelected ) {
-				return [...state, action.id]
-			} else {
-				let markerIndex = state.indexOf(action.id);
-				return copyAndRemove(state, markerIndex)
-			}
-		default:
-			return state
-	}
-}
-
-
 
 const apiDefaultState = {
 	isFetching: false,
@@ -72,6 +42,7 @@ const distanceMatrixDefaultState = {
 	isFetching: false,
 	distanceArray: [],
 	latestCoordinateLookup: [],
+	bounds: [[39.99179, -75.22399], [39.88994, -75.12994]],
 }
 
 function distanceMatrix(state=distanceMatrixDefaultState, action){
@@ -80,6 +51,7 @@ function distanceMatrix(state=distanceMatrixDefaultState, action){
 			return Object.assign({}, state, {
 				isFetching: false,
 				distanceArray: action.distanceArray,
+				bounds: action.bounds
 			})
 
 		case REQUEST_DISTANCE_MATRIX:
@@ -96,8 +68,6 @@ function distanceMatrix(state=distanceMatrixDefaultState, action){
 
 
 const reduceApp = combineReducers({
-  panel,
-  clickedStations,
   api,
   distanceMatrix,
 })

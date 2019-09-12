@@ -1,7 +1,7 @@
 import React from 'react';
 import { Marker as LeafletMarker, Popup as LeafletPopup} from 'react-leaflet'
 import L from 'leaflet';
-
+import { ExtraMarkers } from 'leaflet-extra-markers'
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
@@ -11,32 +11,27 @@ L.Icon.Default.mergeOptions({
 });
 
 
-const blueIcon = new L.Icon({
-  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
+const defaultIcon = ExtraMarkers.icon({
+    icon: 'fa-circle',
+    markerColor: 'blue',
+    shape: 'circle',
+    prefix: 'fa'
+  });
 
-const yellowIcon = new L.Icon({
-  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
+const selectedIcon = ExtraMarkers.icon({
+    icon: 'fa-star',
+    markerColor: 'cyan',
+    shape: 'circle',
+    prefix: 'fa'
+  });
 
-const greyIcon = new L.Icon({
-  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
+const searchIcon = ExtraMarkers.icon({
+    icon: 'fa-search',
+    markerColor: 'red',
+    shape: 'circle',
+    prefix: 'fa'
+  });
+
 
 const POPUP_STYLE = {
   background: '#2c3e50',
@@ -74,19 +69,19 @@ const NUMBER_STYLE = {
 const CAPTION_STYLE = {
   padding: '0 10px 0 10px',
   margin: '0 0 0 0',
-
   color: '#585858',
 
 }
 
 const Marker = ({ name, bikesAvailable, docksAvailable, coordinates, onClick, active, searched } ) => {
-  let icon = blueIcon
-  if ( !!active ) {
-     icon = yellowIcon;
-  } else if ( !!searched ) {
-     icon = greyIcon;
-  }
 
+
+  let icon = defaultIcon;
+  if ( !!active ) {
+     icon = selectedIcon;
+  } else if ( !!searched ) {
+     icon = searchIcon;
+  }
 
   return (
 
