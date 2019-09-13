@@ -15,12 +15,16 @@ const DEFAULT_ZOOM = 12.5;
 
 const MAP_STYLE = {
     height: 600,
+    width: '70%',
 }
 
 
 class BaseMap extends React.Component{
-  render() {
+  constructor(props){
+    super(props)
+  }
 
+  render() {
     return (
     <ReactMap 
       style={MAP_STYLE} 

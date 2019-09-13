@@ -1,6 +1,7 @@
 import React from 'react';
 
 
+
 const StationInfo = ({ id, name, addressStreet, bikesAvailable, docksAvailable }) => (
 		<div>
         	<h1>{name}</h1>
