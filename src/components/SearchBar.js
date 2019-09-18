@@ -7,7 +7,7 @@ const ACCESS_TOKEN = 'pk.eyJ1IjoiZWxsaW90Z2ZyYW5rIiwiYSI6ImNqd3V4aXFzZTBkMjA0YW4
 
 function constructSearchUrl(searchTerm){
 	let params = {
-		bbox: '-76,39,-75,41',
+		bbox: '-75.22399,39.88994,-75.12994,39.99179',
 		access_token: ACCESS_TOKEN
 	}
 	let esc = encodeURIComponent;
