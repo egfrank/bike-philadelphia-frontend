@@ -75,9 +75,11 @@ const ModalBase = styled.div`
   left: 50%;
   transform: translate(-50%,-50%);
   background: white;
+  padding: 20px;
+  font-size: 16px;
+  line-height: 24px;
 
 `
-
 
 const Modal = ({ handleClose, show }) => {
     
@@ -89,8 +91,20 @@ const Modal = ({ handleClose, show }) => {
         <div>
         <h3> Bike Philadelphia </h3>
 
-          <p>
-          Bike Philadelphia is a personal project designed and implemented by <a href="https://github.com/egfrank">Elliot Frank</a>. Indego is the name of the bike share system in Philadelphia. Like many other bike share companies, Indego publishes the current status of all their bike share stations in a real-time <a href="https://www.rideindego.com/stations/">JSON endpoint</a>. This app takes that data and places it on a map to simply and quickly display how many bikes (for someone leaving) and empty spots (for someone arriving) are available at each of the 100+ stations in Philadelphia. Additionally, there is a search bar so that a user can find the closest stations to a given location. This app takes its inspiration from the frontend challenge posted by Punk Ave, a web dev shop based in South Philly. This app is implemented in React and Redux.
+          <p> Bike Philadelphia is a personal project designed and implemented
+          by <a href="https://elliotgfrank.com">Elliot Frank</a>. Indego is
+          the name of the bike share system in Philadelphia. Like many other
+          bike share companies, Indego publishes the current status of all
+          their bike share stations in a real-time <a
+          href="https://www.rideindego.com/stations/">JSON endpoint</a>. This
+          app takes that data and places it on a map to simply and quickly
+          display how many bikes (for someone leaving) and empty spots (for
+          someone arriving) are available at each of the 100+ stations in
+          Philadelphia. Additionally, there is a search bar so that a user can
+          find the closest stations to a given location. This app takes its
+          inspiration from the <a href='https://github.com/punkave/frontend-challenge'>frontend challenge</a> posted by P'unk Ave, a web dev
+          shop based in South Philly. This app is implemented in React and
+          Redux.
 
 
 
