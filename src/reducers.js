@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux'
 import { REQUEST_API_DATA,
-		 RECEIVE_API_DATA,
 		 RECEIVE_API_DATA_SUCCESS,
 		 REQUEST_DISTANCE_MATRIX,
 		 RECEIVE_DISTANCE_MATRIX_SUCCESS,
@@ -8,10 +7,6 @@ import { REQUEST_API_DATA,
 
 // UI Reducers
 
-function copyAndRemove(array, index){
-	// Copies an array without the element at the index provided
-	return [...array.slice(0,index), ...array.slice(index+1)]
-}
 
 const apiDefaultState = {
 	isFetching: false,

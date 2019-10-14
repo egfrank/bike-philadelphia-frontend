@@ -33,13 +33,6 @@ const searchIcon = ExtraMarkers.icon({
   });
 
 
-const POPUP_STYLE = {
-  background: '#2c3e50',
-  color: '#fff',
-  fontSize: '16px',
-  lineHeight: '24px',
-}
-
 const FLEX_CONTAINER = {
   display: 'flex',
   justifyContent: 'center',

@@ -74,7 +74,6 @@ class AutoComplete extends React.Component{
   }
 
   decrementHover(){ 
-    let h = Math.max(this.state.hoverResult-1, -1)
     this.setState({hoverResult: this.state.hoverResult-1})
   }
 
@@ -131,7 +130,6 @@ class AutoComplete extends React.Component{
       border: '1px solid black',
     }
 
-    const _searches = this.state._searches || [];
     const results = [];
     for (let i=0; i<this.state.searchResults.length; i++){
       let r = this.state.searchResults[i];
@@ -185,7 +183,6 @@ class SearchResult extends React.Component{
     const info = this.props.info
     const name = info.text
     const address = info.properties.address
-    const coordinates = info.geometry.coordinates
     const style = {
       backgroundColor: this.props.active ? '#e9e9e9' : 'white',
       fontSize: 16,

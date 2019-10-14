@@ -27,7 +27,11 @@ const App = () => (
   <div >
 
     <div style={NAV_STYLE}>
-      <h1 className="title" style={{marginRight: 'auto', marginLeft: '10px'}}> 🚴‍♀️ Bike Philadelphia </h1>
+      <h1 className="title" 
+      style={{
+        marginRight: 'auto',
+        marginLeft: '10px'
+      }}><span role="img" aria-label="bike">🚴‍♀️</span> Bike Philadelphia </h1>
       <Weather />
       <About style={{ alignSelf: 'center', margin: '0 50px 0 50px'}} />
     </div>

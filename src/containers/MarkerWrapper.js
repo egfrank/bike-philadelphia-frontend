@@ -1,4 +1,3 @@
-import { clickMarker } from '../actions'
 import { connect } from 'react-redux'
 import MarkerList from '../components/MarkerList'
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import L from 'leaflet';
 import { Map as ReactMap, TileLayer } from 'react-leaflet'
 import MarkerWrapper from '../containers/MarkerWrapper'
 
@@ -10,8 +9,6 @@ const mapAccessToken = `pk.eyJ1IjoiZWxsaW90Z2ZyYW5rIiwiYSI6ImNqd3V4aXFzZTBkMjA0Y
 const id = 'mapbox.streets';
 const mapboxURL = `https://api.tiles.mapbox.com/v4/${id}/{z}/{x}/{y}.png?access_token=${mapAccessToken}`
 
-const DEFAULT_POSITION = [39.958482, -75.142813];
-const DEFAULT_ZOOM = 12.5;
 
 const MAP_STYLE = {
     height: 600,
@@ -20,9 +17,6 @@ const MAP_STYLE = {
 
 
 class BaseMap extends React.Component{
-  constructor(props){
-    super(props)
-  }
 
   render() {
     return (
@@ -42,10 +36,6 @@ class BaseMap extends React.Component{
 }
 
 
-
-const getFartherStationCoordinates = function (stationsByID, distanceArray){
-	return stationsByID[distanceArray[distanceArray.length-1][0]]
-};
 
 
 const mapStateToProps = (state) => {

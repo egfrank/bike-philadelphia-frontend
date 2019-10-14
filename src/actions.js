@@ -1,5 +1,4 @@
 import fetch from 'cross-fetch'
-import L from 'leaflet';
 export const CLICK_MARKER = 'CLICK_MARKER'
 
 // Action creators
