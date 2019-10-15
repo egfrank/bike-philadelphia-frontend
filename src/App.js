@@ -1,47 +1,51 @@
 import React from 'react'
-import VisibleStations from './containers/VisibleStations'
+import VisibleStations from './components/VisibleStations'
 import Weather from './components/Weather'
 import CustomMap from './components/CustomMap'
 import About from './components/About'
 
 
-const NAV_STYLE = {
-    display: 'flex', 
-    alignItems: 'center', 
-    justifyContent: 'flex-end',
-}
+import styled from 'styled-components'
 
 
-const BODY_STYLE = {
-    display: 'flex',
-}
+const NavDiv = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+`
 
-const PANEL_STYLE = {
-    width: '30%',
-}
+const BodyDiv = styled.div`
+    display: flex;
+`
 
 
+const PanelDiv = styled.div`
+    width: 30%;
+    margin: 0 10px;
+`
 
+const SiteTitle = styled.div`
+    margin-right: auto;
+    margin-left: 10px;
+    font-family: 'Oleo Script Swash Caps', cursive;
+    font-size: 30px;
+`
 
 const App = () => (
   <div >
 
-    <div style={NAV_STYLE}>
-      <h1 className="title" 
-      style={{
-        marginRight: 'auto',
-        marginLeft: '10px'
-      }}><span role="img" aria-label="bike">🚴‍♀️</span> Bike Philadelphia </h1>
+    <NavDiv>
+      <SiteTitle><span role="img" aria-label="bike">🚴‍♀️</span> Bike Philadelphia </SiteTitle>
       <Weather />
       <About style={{ alignSelf: 'center', margin: '0 50px 0 50px'}} />
-    </div>
+    </NavDiv>
 
-    <div style={BODY_STYLE}>
+    <BodyDiv>
     	<CustomMap  />
-    	<div style={PANEL_STYLE}>
+    	<PanelDiv >
   	     <VisibleStations />
-     </div>
-    </div>
+     </PanelDiv>
+    </BodyDiv>
      
   </div>
 )

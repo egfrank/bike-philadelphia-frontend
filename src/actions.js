@@ -1,5 +1,4 @@
 import fetch from 'cross-fetch'
-export const CLICK_MARKER = 'CLICK_MARKER'
 
 // Action creators
 
@@ -10,14 +9,6 @@ export const RECEIVE_API_DATA_FAILURE = 'REQUEST_API_DATA_FAILURE'
 export const REQUEST_DISTANCE_MATRIX = 'REQUEST_DISTANCE_MATRIX'
 export const RECEIVE_DISTANCE_MATRIX_SUCCESS = 'RECEIVE_DISTANCE_MATRIX_SUCCESS'
 export const RECEIVE_DISTANCE_MATRIX_FAILURE = 'RECEIVE_DISTANCE_MATRIX_FAILURE'
-
-export function clickMarker(id, isSelected){
-	return {
-		type: CLICK_MARKER,
-		id,
-		isSelected
-	}
-}
 
 
 
@@ -58,7 +49,7 @@ export function receiveAPIData(json){
 }
 
 export function fetchAPIData(){
-	return dispatch => {
+	return (dispatch) => {
 	dispatch(requestAPIData);
 	return fetch('https://bike-philly.herokuapp.com/api/v1/stations')
 	  .then(

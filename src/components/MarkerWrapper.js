@@ -1,14 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux'
+
 import Marker from '../components/Marker'
-
-
-
-const MarkerList = (props) => {
-	let markerList = <SearchMarkers {...props} />
-	return (<div>{markerList}</div>)
-}
-
-
 
 
 const SearchMarkers = ( {markerArray, distanceArray, latestCoordinateLookup} ) => {
@@ -31,4 +24,22 @@ const SearchMarkers = ( {markerArray, distanceArray, latestCoordinateLookup} ) =
 	return [searchedMarker, ...markerList]
 }
 
-export default MarkerList
+export const MarkerList = (props) => {
+	let markerList = <SearchMarkers {...props} />
+	return (<div>{markerList}</div>)
+}
+
+
+const mapStateToProps = (state) => {
+	return {
+		markerArray: Object.values(state.api.stationsByID),
+		distanceArray: state.distanceMatrix.distanceArray,
+		latestCoordinateLookup: state.distanceMatrix.latestCoordinateLookup,
+}}
+
+const MarkerWrapper = connect(
+	mapStateToProps,
+	null
+)(MarkerList)
+
+export default MarkerWrapper

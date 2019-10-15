@@ -2,8 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { Map as ReactMap, TileLayer } from 'react-leaflet'
-import MarkerWrapper from '../containers/MarkerWrapper'
-
+import MarkerWrapper from './MarkerWrapper'
 
 const mapAccessToken = `pk.eyJ1IjoiZWxsaW90Z2ZyYW5rIiwiYSI6ImNqd3V4aXFzZTBkMjA0YW4xNGFwNnU4cWwifQ.BsUA_68pUHaCU7v4PCKLKw`
 const id = 'mapbox.streets';
