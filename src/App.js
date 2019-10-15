@@ -1,14 +1,15 @@
 import React from 'react'
+import styled from 'styled-components'
+
 import VisibleStations from './components/VisibleStations'
 import Weather from './components/Weather'
 import CustomMap from './components/CustomMap'
 import About from './components/About'
+import StyledTitle from './components/StyledTitle'
 
 
-import styled from 'styled-components'
 
-
-const NavDiv = styled.div`
+const Nav = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -24,21 +25,19 @@ const PanelDiv = styled.div`
     margin: 0 10px;
 `
 
-const SiteTitle = styled.div`
-    margin-right: auto;
-    margin-left: 10px;
-    font-family: 'Oleo Script Swash Caps', cursive;
-    font-size: 30px;
-`
+
+
 
 const App = () => (
   <div >
 
-    <NavDiv>
-      <SiteTitle><span role="img" aria-label="bike">🚴‍♀️</span> Bike Philadelphia </SiteTitle>
+    <Nav>
+
+      <StyledTitle />
+         
       <Weather />
-      <About style={{ alignSelf: 'center', margin: '0 50px 0 50px'}} />
-    </NavDiv>
+      <About  />
+    </Nav>
 
     <BodyDiv>
     	<CustomMap  />
