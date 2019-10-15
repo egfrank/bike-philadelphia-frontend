@@ -27,16 +27,6 @@ const BaseWeather = ({ temp, imgUrl }) => (
 )
 
 
-
-const createIconImgUrl = (icon) => (
-	`http://openweathermap.org/img/w/${icon}.png`
-)
-
-const convertKtoF = (kelvin) => (
-	Math.round(9 /  5 * (kelvin - 273) + 32, 2)
-)
-
-
 const mapStateToProps = (state) => {
 	let weather = state.api.weather;
 	if ( weather.hasOwnProperty('main') ){
@@ -57,3 +47,14 @@ const mapStateToProps = (state) => {
 const Weather = connect(mapStateToProps, null)(BaseWeather);
 
 export default Weather;
+
+
+
+const createIconImgUrl = (icon) => (
+	`http://openweathermap.org/img/w/${icon}.png`
+)
+
+const convertKtoF = (kelvin) => (
+	Math.round(9 /  5 * (kelvin - 273) + 32, 2)
+)
+
