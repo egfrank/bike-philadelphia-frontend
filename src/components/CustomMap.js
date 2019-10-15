@@ -15,23 +15,19 @@ const MAP_STYLE = {
 }
 
 
-class BaseMap extends React.Component{
-
-  render() {
-    return (
+const BaseMap = ({bounds}) => {
+  return (
     <ReactMap 
       style={MAP_STYLE} 
-      bounds={ this.props.bounds }
+      bounds={bounds}
       boundsOptions={{padding: [100, 100]}}
     >
       <TileLayer
                 url={mapboxURL}
                 attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"/>
-       <MarkerWrapper />
+      <MarkerWrapper />
     </ReactMap>
-
-    )
-  }
+  )
 }
 
 
