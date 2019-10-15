@@ -1,39 +1,45 @@
-import { connect } from 'react-redux'
 import React from 'react';
+import styled from 'styled-components'
+
+import { connect } from 'react-redux'
 
 
-const WEATHER_STYLE = {
-	borderRadius: 20, 
-	alignItems: 'center',
-	background: 'white', 
-	display: 'flex', 
-	justifyContent: 'space-between',
-	border: '0.5px solid #F0F0F0',
-	width: 100,
-	height: 60
-}
+const WeatherDiv = styled.div`
+	align-items: center;
+	background: white;
+	display: flex;
+	justify-content: space-between;
+	border: 0.5px solid #F0F0F0;
+	border-radius: 20px;
+	width: 100px;
+	height: 60px;
+`
+const Temperature = styled.h3`
+	margin-left: 10px;
+	text-align: center;
+`
 
 const BaseWeather = ({ temp, imgUrl }) => (
-	<div style={WEATHER_STYLE}>
-		<h3 style={{marginLeft: 10, textAlign: 'center'}}> {temp} </h3>
+	<WeatherDiv>
+		<Temperature>{temp}</Temperature>
 		<img src={imgUrl}  alt="weather icon"></img>
-	</div>
+	</WeatherDiv>
 )
 
 
-function createIconImgUrl(icon){
-  return `http://openweathermap.org/img/w/${icon}.png`
-}
 
-function convertKtoF(kelvin){
-  return Math.round(9 /  5 * (kelvin - 273) + 32, 2)
-}
+const createIconImgUrl = (icon) => (
+	`http://openweathermap.org/img/w/${icon}.png`
+)
+
+const convertKtoF = (kelvin) => (
+	Math.round(9 /  5 * (kelvin - 273) + 32, 2)
+)
 
 
-
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
 	let weather = state.api.weather;
-	if  ( weather.hasOwnProperty('main') ){
+	if ( weather.hasOwnProperty('main') ){
 		return {  
 			temp: convertKtoF(state.api.weather.main.temp) + '\xB0',
 			imgUrl: createIconImgUrl(state.api.weather.weather[0].icon),
@@ -45,6 +51,8 @@ const mapStateToProps = state => {
 		}
 	}
 };
+
+// What is this doing, going from the particular weather in state to the format we need in the component, should actually be done by a selector
 
 const Weather = connect(mapStateToProps, null)(BaseWeather);
 
